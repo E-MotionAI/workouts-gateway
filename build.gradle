@@ -13,17 +13,6 @@ java {
 	}
 }
 
-
-jar {
-    destinationDirectory.set(file("$projectDir/target"))
-	    manifest {
-        attributes(
-                'Main-Class': 'physic/ai/demo/DemoApplication.java'
-        )
-		archiveFileName.set('emotion-gateway.jar')
-    }
-}
-
 repositories {
 	mavenCentral()
 }
@@ -48,3 +37,11 @@ dependencyManagement {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task unpack(type: Copy) {
+	dependsOn bootJar
+	from(zipTree(tasks.bootJar.outputs.files.singleFile))
+	into("build/docker/dependency")
+}
+
+build.dependsOn unpack

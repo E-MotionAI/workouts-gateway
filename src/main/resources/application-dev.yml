@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: user-service
+            uri: http://localhost:8082
+            predicates:
+              - Path=/v1/emotion/user/**
+            filters:
+              - AddRequestHeader=Service-Request, user-service
+              - RewritePath=/v1/emotion/user/?(?<segment>.*),/api/v1/user/$\{segment}
+

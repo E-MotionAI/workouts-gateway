@@ -20,6 +20,7 @@ jar {
         attributes(
                 'Main-Class': 'physic/ai/demo/DemoApplication.java'
         )
+		archiveBaseName.set('emotion-gateway')
     }
 }
 

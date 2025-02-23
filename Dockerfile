@@ -21,5 +21,5 @@ FROM alpine:latest
 COPY --from=build  /springboot-runtime /opt/jdk 
 ENV PATH=$PATH:/opt/jdk/bin
 EXPOSE 8080
-COPY ../target/*.jar /opt/app/app.jar
-CMD ["java", "-showversion", "-jar", "/opt/app/app.jar"]
+COPY target/emotion-gateway.jar /opt/app/
+CMD ["java", "-showversion", "-jar", "/opt/app/emotion-gateway.jar"]

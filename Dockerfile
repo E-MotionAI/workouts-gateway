@@ -1,9 +1,9 @@
-FROM openjdk:21-jdk-alpine as builder
+FROM eclipse-temurin:21.0.4_7-jdk-alpine as builder
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
-FROM openjdk:21-jdk-alpine
+FROM eclipse-temurin:21.0.4_7-jdk-alpine
 COPY --from=builder dependencies/ ./
 COPY --from=builder snapshot-dependencies/ ./
 COPY --from=builder spring-boot-loader/ ./

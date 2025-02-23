@@ -16,6 +16,11 @@ java {
 
 jar {
     destinationDirectory.set(file("$projectDir/target"))
+	    manifest {
+        attributes(
+                'Main-Class': 'physic/ai/demo/DemoApplication.java'
+        )
+    }
 }
 
 repositories {

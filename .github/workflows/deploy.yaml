@@ -1,4 +1,4 @@
-name: Build CI
+name: Push Docker Image
 
 on:
   push:
@@ -52,5 +52,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/users-service:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/emotion-api-gateway:latest
           labels: ${{ steps.meta.outputs.labels }}

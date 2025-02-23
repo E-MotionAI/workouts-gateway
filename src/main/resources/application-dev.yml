@@ -11,3 +11,11 @@ spring:
               - AddRequestHeader=Service-Request, user-service
               - RewritePath=/v1/emotion/user/?(?<segment>.*),/api/v1/user/$\{segment}
 
+          - id: workouts-service
+            uri: http://localhost:3000
+            predicates:
+              - Path=/v1/emotion/workouts/**
+            filters:
+              - AddRequestHeader=Service-Request, workouts-service
+              - RewritePath=/v1/emotion/workouts/?(?<segment>.*),/api/v1/workouts/$\{segment}
+
